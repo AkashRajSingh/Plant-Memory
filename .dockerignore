@@ -1,0 +1,9 @@
+.env
+.venv
+**/__pycache__
+.pytest_cache
+data
+releases
+web/node_modules
+web/dist
+ontology/plant_memory_instances.ttl

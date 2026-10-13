@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/plant_memory.db
+data/cache/
+data/uploads/
+data/workspace/
+ontology/plant_memory_instances.ttl
+ontology/extensions.json
+web/node_modules/
+releases/

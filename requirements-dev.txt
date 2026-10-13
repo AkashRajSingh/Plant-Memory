@@ -1,0 +1,3 @@
+# Optional: runs the Neo4j backend's Cypher on an embedded openCypher engine in tests (Linux/macOS).
+# On Windows, test against your real Neo4j instead: set PLANT_MEMORY_TEST_NEO4J=1.
+falkordblite>=0.9

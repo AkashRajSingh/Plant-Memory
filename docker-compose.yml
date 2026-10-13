@@ -1,0 +1,35 @@
+# docker compose up --build   ->  web app on http://localhost:8765, Neo4j Browser on http://localhost:7474
+# Settings come from .env in this folder (NEO4J_PASSWORD, GROQ_API_KEY, ...).
+services:
+  neo4j:
+    image: neo4j:5-community
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:-plantmemory}
+    ports: ["7474:7474", "7687:7687"]
+    volumes: ["neo4j-data:/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p \"$${NEO4J_AUTH#neo4j/}\" 'RETURN 1' || exit 1"]
+      interval: 5s
+      timeout: 10s
+      retries: 30
+
+  app:
+    build: .
+    ports: ["8765:8765"]
+    environment:
+      PLANT_MEMORY_STORE: neo4j
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USER: neo4j
+      NEO4J_PASSWORD: ${NEO4J_PASSWORD:-plantmemory}
+      NEO4J_DATABASE: neo4j
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      GROQ_MODEL: ${GROQ_MODEL:-openai/gpt-oss-120b}
+    volumes:
+      - ./data:/app/data           # uploads, workspace settings, LLM cache
+      - ./ontology:/app/ontology   # schema + vocabulary extensions
+    depends_on:
+      neo4j:
+        condition: service_healthy
+
+volumes:
+  neo4j-data:

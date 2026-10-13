@@ -1,0 +1,71 @@
+@prefix pm:   <https://plantmemory.dev/ontology#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+
+<https://plantmemory.dev/ontology> a owl:Ontology ;
+    rdfs:label "Plant Memory maintenance ontology" ;
+    dct:description "Classes and relations for maintenance knowledge in a rice processing plant. Failure modes are aligned with ISO 14224 failure mechanisms. Every statement extracted from work orders is reified as a pm:Fact with confidence, method, verification status and evidence." ;
+    owl:versionInfo "0.1.0" .
+
+# ---------------- Classes ----------------
+pm:ProcessArea       a owl:Class ; rdfs:label "Process area" .
+pm:Asset             a owl:Class ; rdfs:label "Asset" ; rdfs:comment "A maintainable item with a functional location / equipment id." .
+pm:AssetClass        a owl:Class ; rdfs:label "Asset class" .
+pm:Component         a owl:Class ; rdfs:label "Component" .
+pm:SparePart         a owl:Class ; rdfs:label "Spare part (SAP material)" .
+pm:Symptom           a owl:Class ; rdfs:label "Symptom" .
+pm:FailureMode       a owl:Class ; rdfs:label "Failure mode" .
+pm:RootCause         a owl:Class ; rdfs:label "Root cause" .
+pm:CauseCategory     a owl:Class ; rdfs:label "Cause category" .
+pm:Action            a owl:Class ; rdfs:label "Maintenance action" .
+pm:MaintenanceEvent  a owl:Class ; rdfs:label "Maintenance event (work order)" .
+pm:Evidence          a owl:Class ; rdfs:label "Evidence" ; rdfs:comment "A source row in the SAP export or a technician statement." .
+pm:Fact              a owl:Class ; rdfs:label "Fact" ; rdfs:comment "A reified statement event-predicate-term with provenance." .
+pm:Technician        a owl:Class ; rdfs:label "Technician" .
+
+pm:VerificationStatus a owl:Class ; owl:oneOf ( pm:Proposed pm:Verified pm:Rejected ) .
+pm:Proposed a pm:VerificationStatus . pm:Verified a pm:VerificationStatus . pm:Rejected a pm:VerificationStatus .
+
+# ---------------- Object properties ----------------
+pm:locatedIn        a owl:ObjectProperty ; rdfs:domain pm:Asset ; rdfs:range pm:ProcessArea .
+pm:instanceOfClass  a owl:ObjectProperty ; rdfs:domain pm:Asset ; rdfs:range pm:AssetClass .
+pm:hasComponent     a owl:ObjectProperty ; rdfs:domain pm:Asset ; rdfs:range pm:Component .
+pm:realizes         a owl:ObjectProperty ; rdfs:domain pm:SparePart ; rdfs:range pm:Component ; rdfs:label "spare part is an instance of component type" .
+pm:onAsset          a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:Asset .
+pm:involvesComponent a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:Component .
+pm:observedSymptom  a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:Symptom .
+pm:hasFailureMode   a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:FailureMode .
+pm:hasRootCause     a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:RootCause .
+pm:resolvedBy       a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:Action .
+pm:consumed         a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:SparePart .
+pm:typicallyAffects a owl:ObjectProperty ; rdfs:domain pm:FailureMode ; rdfs:range pm:Component .
+pm:inCategory       a owl:ObjectProperty ; rdfs:domain pm:RootCause ; rdfs:range pm:CauseCategory .
+pm:recursOn         a owl:ObjectProperty ; rdfs:domain pm:FailureMode ; rdfs:range pm:Asset .
+pm:performedBy      a owl:ObjectProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range pm:Technician .
+
+# reification of facts
+pm:subject   a owl:ObjectProperty ; rdfs:domain pm:Fact .
+pm:predicate a owl:ObjectProperty ; rdfs:domain pm:Fact .
+pm:object    a owl:ObjectProperty ; rdfs:domain pm:Fact .
+pm:status    a owl:ObjectProperty ; rdfs:domain pm:Fact ; rdfs:range pm:VerificationStatus .
+pm:supportedBy a owl:ObjectProperty ; rdfs:domain pm:Fact ; rdfs:range pm:Evidence .
+pm:verifiedBy  a owl:ObjectProperty ; rdfs:domain pm:Fact ; rdfs:range pm:Technician .
+
+# ---------------- Datatype properties ----------------
+pm:postingDate    a owl:DatatypeProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range xsd:date .
+pm:costRs         a owl:DatatypeProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range xsd:decimal .
+pm:downtimeHours  a owl:DatatypeProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range xsd:decimal .
+pm:isBreakdown    a owl:DatatypeProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range xsd:boolean .
+pm:workType       a owl:DatatypeProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range xsd:string .
+pm:sapOrder       a owl:DatatypeProperty ; rdfs:domain pm:MaintenanceEvent ; rdfs:range xsd:string .
+pm:sapMaterial    a owl:DatatypeProperty ; rdfs:domain pm:SparePart ; rdfs:range xsd:string .
+pm:confidence     a owl:DatatypeProperty ; rdfs:domain pm:Fact ; rdfs:range xsd:decimal .
+pm:method         a owl:DatatypeProperty ; rdfs:domain pm:Fact ; rdfs:range xsd:string .
+pm:verifiedAt     a owl:DatatypeProperty ; rdfs:domain pm:Fact ; rdfs:range xsd:dateTime .
+pm:sourceField    a owl:DatatypeProperty ; rdfs:domain pm:Evidence ; rdfs:range xsd:string .
+pm:snippet        a owl:DatatypeProperty ; rdfs:domain pm:Evidence ; rdfs:range xsd:string .
+pm:isoMechanism   a owl:DatatypeProperty ; rdfs:domain pm:FailureMode ; rdfs:range xsd:string .
+pm:synonym        a owl:DatatypeProperty ; rdfs:range xsd:string .

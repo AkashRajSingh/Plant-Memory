@@ -1,0 +1,377 @@
+{
+  "extraction": {
+    "asset": {
+      "events": 400,
+      "coverage": 1.0,
+      "precision": 1.0,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "outside_taxonomy": 0
+    },
+    "component": {
+      "events": 391,
+      "coverage": 0.987,
+      "precision": 0.974,
+      "accuracy": 0.962,
+      "macro_f1": 0.953,
+      "outside_taxonomy": 0
+    },
+    "failure_mode": {
+      "events": 350,
+      "coverage": 0.991,
+      "precision": 0.896,
+      "accuracy": 0.889,
+      "macro_f1": 0.88,
+      "outside_taxonomy": 7
+    },
+    "root_cause": {
+      "events": 350,
+      "coverage": 0.62,
+      "precision": 1.0,
+      "accuracy": 0.62,
+      "macro_f1": 0.805,
+      "outside_taxonomy": 7
+    },
+    "action": {
+      "events": 400,
+      "coverage": 0.948,
+      "precision": 0.982,
+      "accuracy": 0.93,
+      "macro_f1": 0.899,
+      "outside_taxonomy": 0
+    },
+    "symptom": {
+      "events": 357,
+      "coverage": 0.608,
+      "precision": 0.982,
+      "accuracy": 0.597,
+      "macro_f1": 0.767,
+      "outside_taxonomy": 0
+    },
+    "is_failure": {
+      "precision": 0.989,
+      "recall": 0.972
+    },
+    "drift_detection": {
+      "events_outside_taxonomy": 7,
+      "flagged": 7
+    }
+  },
+  "diagnosis": {
+    "questions": 28,
+    "baseline_top1": 0.536,
+    "plant_memory_top1": 0.821,
+    "plant_memory_top3": 0.964,
+    "plant_memory_grounded": 1.0,
+    "detail": [
+      {
+        "asset": "P2R-BRN-CNV-01",
+        "failure_mode": "bearing_wear",
+        "events": 7,
+        "true_cause": "inadequate_lubrication",
+        "baseline_answer": "no grease",
+        "baseline_correct": true,
+        "plant_memory_answer": "inadequate_lubrication",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.864
+      },
+      {
+        "asset": "P2R-BRN-CNV-01",
+        "failure_mode": "belt_wear",
+        "events": 13,
+        "true_cause": "misalignment",
+        "baseline_answer": "stone in feed",
+        "baseline_correct": false,
+        "plant_memory_answer": "misalignment",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.429
+      },
+      {
+        "asset": "P2R-ELV-12",
+        "failure_mode": "belt_slippage",
+        "events": 7,
+        "true_cause": "improper_tensioning",
+        "baseline_answer": "belt tension improper",
+        "baseline_correct": true,
+        "plant_memory_answer": "improper_tensioning",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.75
+      },
+      {
+        "asset": "P2R-ELV-12",
+        "failure_mode": "sprocket_tooth_wear",
+        "events": 7,
+        "true_cause": "misalignment",
+        "baseline_answer": "misalignment",
+        "baseline_correct": true,
+        "plant_memory_answer": "misalignment",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.571
+      },
+      {
+        "asset": "P2R-HSK-01",
+        "failure_mode": "bearing_wear",
+        "events": 9,
+        "true_cause": "inadequate_lubrication",
+        "baseline_answer": "life over",
+        "baseline_correct": false,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": false,
+        "plant_memory_confidence": 0.625
+      },
+      {
+        "asset": "P2R-HSK-01",
+        "failure_mode": "rubber_roll_wear",
+        "events": 23,
+        "true_cause": "normal_wear",
+        "baseline_answer": "life over",
+        "baseline_correct": true,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.673
+      },
+      {
+        "asset": "P2R-HSK-02",
+        "failure_mode": "belt_wear",
+        "events": 5,
+        "true_cause": "normal_wear",
+        "baseline_answer": "wear & tear",
+        "baseline_correct": true,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 1.0
+      },
+      {
+        "asset": "P2R-HSK-02",
+        "failure_mode": "rubber_roll_wear",
+        "events": 24,
+        "true_cause": "normal_wear",
+        "baseline_answer": "wear & tear",
+        "baseline_correct": true,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.724
+      },
+      {
+        "asset": "P2R-PLS-01",
+        "failure_mode": "bearing_seizure",
+        "events": 5,
+        "true_cause": "moisture_ingress",
+        "baseline_answer": "lubrication failure",
+        "baseline_correct": false,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": false,
+        "plant_memory_confidence": 0.351
+      },
+      {
+        "asset": "P2R-PLS-01",
+        "failure_mode": "screen_tear",
+        "events": 12,
+        "true_cause": "normal_wear",
+        "baseline_answer": "foreign material",
+        "baseline_correct": false,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.619
+      },
+      {
+        "asset": "P2R-SRT-01",
+        "failure_mode": "valve_sticking",
+        "events": 8,
+        "true_cause": "dust_ingress",
+        "baseline_answer": "life over",
+        "baseline_correct": false,
+        "plant_memory_answer": "dust_ingress",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.588
+      },
+      {
+        "asset": "P2R-WHT-01",
+        "failure_mode": "bearing_wear",
+        "events": 4,
+        "true_cause": "inadequate_lubrication",
+        "baseline_answer": null,
+        "baseline_correct": false,
+        "plant_memory_answer": "inadequate_lubrication",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 1.0
+      },
+      {
+        "asset": "P2R-WHT-01",
+        "failure_mode": "screen_tear",
+        "events": 5,
+        "true_cause": "foreign_material",
+        "baseline_answer": null,
+        "baseline_correct": false,
+        "plant_memory_answer": "foreign_material",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 1.0
+      },
+      {
+        "asset": "P2R-WHT-01",
+        "failure_mode": "stone_wear",
+        "events": 7,
+        "true_cause": "normal_wear",
+        "baseline_answer": "stone in feed",
+        "baseline_correct": false,
+        "plant_memory_answer": "foreign_material",
+        "plant_memory_correct": false,
+        "plant_memory_confidence": 0.533
+      },
+      {
+        "asset": "PARB-DRY-ELV-01",
+        "failure_mode": "bearing_wear",
+        "events": 23,
+        "true_cause": "misalignment",
+        "baseline_answer": "misalignment",
+        "baseline_correct": true,
+        "plant_memory_answer": "misalignment",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.705
+      },
+      {
+        "asset": "PARB-DRY-ELV-01",
+        "failure_mode": "bucket_damage",
+        "events": 6,
+        "true_cause": "foreign_material",
+        "baseline_answer": "choke-up",
+        "baseline_correct": false,
+        "plant_memory_answer": "foreign_material",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.778
+      },
+      {
+        "asset": "PARB-DRY-ELV-01",
+        "failure_mode": "sprocket_tooth_wear",
+        "events": 10,
+        "true_cause": "misalignment",
+        "baseline_answer": "misalignment",
+        "baseline_correct": true,
+        "plant_memory_answer": "misalignment",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.636
+      },
+      {
+        "asset": "PARB-DRYER-01",
+        "failure_mode": "sensor_failure",
+        "events": 7,
+        "true_cause": "moisture_ingress",
+        "baseline_answer": "moisture ingress",
+        "baseline_correct": true,
+        "plant_memory_answer": "moisture_ingress",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 1.0
+      },
+      {
+        "asset": "PARB-ELV-01",
+        "failure_mode": "belt_slippage",
+        "events": 9,
+        "true_cause": "improper_tensioning",
+        "baseline_answer": "normal wear",
+        "baseline_correct": false,
+        "plant_memory_answer": "improper_tensioning",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.81
+      },
+      {
+        "asset": "PARB-ELV-01",
+        "failure_mode": "sprocket_tooth_wear",
+        "events": 5,
+        "true_cause": "misalignment",
+        "baseline_answer": "misalignment",
+        "baseline_correct": true,
+        "plant_memory_answer": "misalignment",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 1.0
+      },
+      {
+        "asset": "PARB-ELV-02",
+        "failure_mode": "sprocket_tooth_wear",
+        "events": 6,
+        "true_cause": "normal_wear",
+        "baseline_answer": "misalignment",
+        "baseline_correct": false,
+        "plant_memory_answer": "misalignment",
+        "plant_memory_correct": false,
+        "plant_memory_confidence": 0.4
+      },
+      {
+        "asset": "PARB-HODI-CNV-01",
+        "failure_mode": "bearing_wear",
+        "events": 4,
+        "true_cause": "dust_ingress",
+        "baseline_answer": "dust ingress",
+        "baseline_correct": true,
+        "plant_memory_answer": "dust_ingress",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.7
+      },
+      {
+        "asset": "PARB-HODI-CNV-01",
+        "failure_mode": "belt_wear",
+        "events": 12,
+        "true_cause": "normal_wear",
+        "baseline_answer": "normal wear",
+        "baseline_correct": true,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.75
+      },
+      {
+        "asset": "PARB-HODI-ELV-01",
+        "failure_mode": "bearing_wear",
+        "events": 12,
+        "true_cause": "inadequate_lubrication",
+        "baseline_answer": "life over",
+        "baseline_correct": false,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": false,
+        "plant_memory_confidence": 0.423
+      },
+      {
+        "asset": "PARB-PCL-01",
+        "failure_mode": "screen_tear",
+        "events": 12,
+        "true_cause": "foreign_material",
+        "baseline_answer": "life over",
+        "baseline_correct": false,
+        "plant_memory_answer": "foreign_material",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.676
+      },
+      {
+        "asset": "PCK-PKM-01",
+        "failure_mode": "bearing_wear",
+        "events": 5,
+        "true_cause": "normal_wear",
+        "baseline_answer": "wear & tear",
+        "baseline_correct": true,
+        "plant_memory_answer": "normal_wear",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.571
+      },
+      {
+        "asset": "PCK-PKM-01",
+        "failure_mode": "electrical_fault",
+        "events": 6,
+        "true_cause": "electrical_supply",
+        "baseline_answer": "single phasing",
+        "baseline_correct": true,
+        "plant_memory_answer": "electrical_supply",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 1.0
+      },
+      {
+        "asset": "UTL-DM-PMP-01",
+        "failure_mode": "seal_leakage",
+        "events": 4,
+        "true_cause": "cavitation",
+        "baseline_answer": "dry running",
+        "baseline_correct": true,
+        "plant_memory_answer": "cavitation",
+        "plant_memory_correct": true,
+        "plant_memory_confidence": 0.333
+      }
+    ]
+  }
+}
