@@ -11,3 +11,4 @@ ontology/plant_memory_instances.ttl
 ontology/extensions.json
 web/node_modules/
 releases/
+web/tsconfig.tsbuildinfo
